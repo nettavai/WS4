@@ -1,0 +1,311 @@
+<!doctype html>
+<HTML lang="en">
+	<head>
+		<title>Workshop 4</title>
+		<meta charset="utf-8">
+		<script>
+
+	//Tehtävä 1
+
+            function changeHeading() {
+                document.querySelector('h1').innerHTML= 'Modified Heading!'
+            }
+
+            function secondButton() {
+                document.querySelectorAll('h2')[1].style.backgroundColor = 'red';
+                document.querySelectorAll('h2')[1].style.fontFamily = 'Impact, fantasy';
+                document.querySelectorAll('h2')[1].style.fontSize = '40px';
+                document.querySelectorAll('h2')[1].style.color = 'white';
+            } 
+
+            function thirdbutton() {
+                document.querySelectorAll('p')[3].innerHTML+= '"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. "'
+				document.querySelectorAll('p')[3].style.fontStyle = 'italic'
+				document.body.style.backgroundColor = 'lightgrey'; 
+            const logo = document.createElement('img');
+            logo.src = 'https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1727740800&semt=ais_hybrid'; // Example logo image URL
+            logo.alt = 'Logo';
+            document.body.appendChild(logo); // logo näkyy sivun lopussa
+			}
+
+	//tehtävä 2
+
+		function hide() {
+            const element = document.querySelector('#me'); 
+            if (element) {
+                element.style.display = 'none';
+                console.log('The element with ID "me" is now hidden.');
+            }
+        }
+
+        
+        function show() {
+            const element = document.querySelector('#me'); 
+            if (element) {
+                element.style.display = 'block';
+                console.log('The element with ID "me" is now visible.');
+            }
+        }
+
+        
+        function surprise() {
+            const elements = document.querySelectorAll('.surprise'); 
+            elements.forEach(element => {
+                element.style.fontSize = '20px';
+            });
+            console.log('Font size changed to 20px for elements with class "surprise".');
+        }
+
+	// Tehtävä 3
+
+		function carSelected() {
+    	const selectedCar = document.getElementById('mySelect').value;
+    	alert(`You have selected: ${selectedCar}`);
+    
+    	// Auton kuvat
+    	const carImage = document.getElementById('carimage');
+    	switch(selectedCar) {
+        case 'BMW':
+            carImage.src = 'https://img.ilcdn.fi/E574X-OlqIDLEnGDr07ejUXc6BE=/full-fit-in/920x0/img-s3.ilcdn.fi/01209b6e90355fb6ad08db5455ef49f048de0f0830b6b309a212af1f31da093b.jpg';
+            break;
+        case 'Audi':
+            carImage.src = 'https://www.audi.fi/dam/nemo/fi/kuvia/2023/etusivu/audilife_etusivun_laatikko_570x857.jpg';
+            break;
+        case 'Mercedes':
+            carImage.src = 'https://autovista.fi/wp-content/uploads/sites/8/2022/06/d662614-1024x640-1.jpg';
+            break;
+        case 'Volvo':
+            carImage.src = 'https://www.volvocars.com/images/v/-/media/applications/pdpspecificationpage/my25/xc60-hybrid/pdp/xc60-hybrid-og.jpg?h=630&iar=0&w=1200';
+            break;
+        default:
+            carImage.src = ''; 
+    }
+							}
+
+		// Reunat autokuville
+		function hoverImage() {
+   	 	const carImage = document.getElementById('carimage');
+   	 	carImage.style.border = '7px solid pink'; 
+		}
+
+		function leaveImage() {
+    	const carImage = document.getElementById('carimage');
+    	carImage.style.border = 'none'; // Remove the border
+		}
+
+	// Tehtävä 4
+		
+		let pos = 0
+
+		function changePosition(){
+        let c = document.querySelector('#carimage')
+			c.style.position = 'relative'
+			c.style.top = '300px'
+			c.style.left = '200px'
+		}
+		
+
+        function doMove() {
+            let carImage = document.getElementById('carimage');
+            carImage.style.position = 'relative'
+			pos += 1
+            carImage.style.left = pos+'5px'
+        }
+
+        function fadeOut() {
+            const carImage = document.getElementById('carimage');
+            let opacity = 1; // Alkuperäinen läpinäkyvyys
+            const fadeOutInterval = setInterval(() => {
+                if (opacity <= 0) {
+                    clearInterval(fadeOutInterval);
+                    carImage.style.display = 'none'; // Piilota kuva, kun häivytys on valmis
+                } else {
+                    opacity -= 0.05; // Vähennetään läpinäkyvyyttä
+                    carImage.style.opacity = opacity; // Päivitetään läpinäkyvyys
+                }
+            }, 100);
+        }
+
+        function remove() {
+            const carImage = document.getElementById('carimage');
+            carImage.style.display = 'none'; // Poistetaan kuva näkyvistä
+        }
+		  
+
+	// tehtävä 5 
+		function insertRows() {
+            // Haetaan arvot syöttökentistä
+            const name = document.getElementById('textfield').value;
+            const position = document.getElementById('textfield2').value;
+            const salary = document.getElementById('textfield3').value;
+
+            // Luodaan uusi rivi taulukkoon
+            const table = document.getElementById('data').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            // Lisätään solut uuteen riviin
+            const nameCell = newRow.insertCell(0);
+            const positionCell = newRow.insertCell(1);
+            const salaryCell = newRow.insertCell(2);
+
+            // Asetetaan solujen arvot
+            nameCell.innerText = name;
+            positionCell.innerText = position;
+            salaryCell.innerText = salary;
+
+            // Tyhjennetään syöttökentät
+            document.getElementById('textfield').value = '';
+            document.getElementById('textfield2').value = '';
+            document.getElementById('textfield3').value = '';
+        }
+
+        </script>
+	</head>
+	<body class="ws4">
+		<h1>Workshop 4: DOM Scripting</h1>
+		<hr />
+		<p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use. </p>
+
+		<hr/>
+		<h2>Exercise 1: Basic  DOM Manipulation</h2>
+		<p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons. Use Developer Console to find the </p>
+		<p>
+		  <button onclick="changeHeading();">Button 1</button>
+		  <button onclick="secondButton()">Button 2</button>
+		  <button onclick="thirdbutton()">Button 3</button>
+		</p>
+
+		<ul>
+			<li>The first button should run a JavaScript-function, which will find the reference to &quot;Workshop 4&quot; heading on this page and change the contents of it to &quot;Modified Heading!&quot;. </li>
+			<li> The second button should run a function, which will modify the style of the &quot;Exercise 2&quot; heading on this page. JavaScript should change at least the font size, style and color and the background color</li>
+			<li>The third button should append the following text paragraph after the <strong>4th paragraph tag &lt;p&gt;</strong> on the page (without overwriting the current content). Change the background of the entire page as well. Note: The Lorem ipsum text should be in italics. It should also add a logo image of some sort after the text.<br>
+			<br>
+			<strong id="lorem"><em>&quot;Lorem ipsum</em></strong><em> dolor sit amet, consectetuer   adipiscing elit. Sed posuere interdum sem. Quisque ligula eros   ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam   vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget   velit. &quot;</em></li>
+		</ul>
+		<hr/>
+		<h2>Exercise 2: DOM Traversing using ID's and classes</h2>
+		<p class="surprise">Add onchange -events to following checkboxes.</p>
+		<p>
+			<label>
+				<input onchange="hide()" name="CheckboxGroup1" type="checkbox" id="CheckboxGroup1_0" title="Actions" value="1">
+				Hide me 
+			</label>
+			<br>
+			<label>
+				<input onchange="show()" type="checkbox" name="CheckboxGroup1" value="2" id="CheckboxGroup1_1">
+				Show me
+			</label>
+			<br>
+			<label>
+				<input onchange="surprise()" type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
+				<span id="surpise">Surprise</span>
+			</label>
+		</p>
+		<ul>
+		  <li>First checkbox: Find out which element has been described with the id &quot;me&quot;. Change the visibility (display value) of the element to none. What happens?</li>
+		  <li>Second checkbox should return the visibility of the element to a normal state (block).</li>
+		  <li>Third checkbox should find the elements with class &quot;surprise&quot; and change the font size to 20.</li>
+		</ul>
+		<div id="me" class="red-box"></div>
+		<p>&nbsp;</p>
+		<hr/>
+		<h2>Exercise 3: Images and pulldowns</h2>
+			<ul>
+				<li>Write a JavaScript function, which will fire when the pulldown menu item is changed. Show the users choice using alert -box.</li>
+				<li>When the mouse is moved on top of the image, a colored border should appear surrounding it. On mouse out, border should disappear</li>
+				<li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
+			</ul>
+		  <p>Select a new car from the list.</p>
+		  <select name="mySelect" id="mySelect" onchange="carSelected()">
+			<option value="BMW">BMW</option>
+			<option value="Audi">Audi</option>
+			<option value="Mercedes">Mercedes</option>
+			<option value="Volvo">Volvo</option>
+		  </select>
+		  <br>
+		  <br>
+		<img alt="" onmouseover="hoverImage()" onmouseout="leaveImage()" style="left: 0px; opacity: 1;" src="https://img.ilcdn.fi/E574X-OlqIDLEnGDr07ejUXc6BE=/full-fit-in/920x0/img-s3.ilcdn.fi/01209b6e90355fb6ad08db5455ef49f048de0f0830b6b309a212af1f31da093b.jpg" width="400" id="carimage"/>
+		<hr/>
+		<h2>Exercise 4: Moving things around</h2>
+		<ul>
+		  <li>
+			<p class="surprise">You can do neat things by editing CSS-rules via  JavaScript. See the examples in lecture slides. Then try these:</p>
+			<ol>
+			  <li><button onclick="changePosition()">Move!</button>Select the div with an id &quot;carimage&quot; and move it 200px left and 500px down</li>
+			  <li><button onclick="setInterval(function(){doMove();},100); ">Animate</button> Write a  funtion doMove() which  will move the image across the screen, or even better: back and forth on  the screen. The Interval required has already been added to the onclick -event of the list item.</li>
+			  <li><button onclick="setInterval(function(){fadeOut();},250);">Fade out!</button> Wite  a function fadeOut() which will slowly decrease the opacity of the image from 1.0 to  0 making it fade out. The Interval required has already been added to the onclick -event of the list item</li>
+			  <li><button onclick="remove()">Disappear! </button>Finally, write JavaScript which will remove the image from the page</li>
+			</ol>
+		  </li>
+		</ul>
+		<hr/>
+		
+
+		
+		<h2>Exercise 5: Tables</h2>
+		<ul>
+		  <li class="surprise">Write a JavaScript function to  add rows to a table. Rows can contain preset values.</li>
+		  <li>When your code is working, try reading the content to be added from a set of fields below the table.</li>
+		</ul>
+		<br>
+		<table id="data" class="display">
+			<thead>
+			  <tr>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Salary</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>Tiger Nixon</td>
+				<td>System Architect</td>
+				<td>$320,800</td>
+			  </tr>
+			  <tr>
+				<td>Garrett Winters</td>
+				<td>Accountant</td>
+				<td>$170,750</td>
+			  </tr>
+			  <tr>
+				<td>Ashton Cox</td>
+				<td>Junior Technical Author</td>
+				<td>$86,000</td>
+			  </tr>
+			  <tr>
+				<td>Cedric Kelly</td>
+				<td>Senior Javascript Developer</td>
+				<td>$433,060</td>
+			  </tr>
+			  <tr>
+				<td>Airi Satou</td>
+				<td>Accountant</td>
+				<td>$162,700</td>
+			  </tr>
+			</tbody>
+			<tfoot>
+			</tfoot>
+		</table>
+		<p>
+			Name
+			<label for="textfield">:</label>
+			<input type="text" name="textfield" id="textfield">
+			<br>
+			Position:
+			<input type="text" name="textfield2" id="textfield2">
+			<br>
+			Salary: 
+			<input type="text" name="textfield3" id="textfield3">
+			<br>
+			<input type="button" onclick="insertRows()" name="Insert" id="Insert" value="Insert">
+		</p>
+		<hr/>
+		<h2>Bonus exercises for the enthusiastics</h2>
+		<ul>
+			<li dir="ltr">
+				<p dir="ltr">Write a loop, which goes through all the LI tags in the page and replaces them with a &lt;strong&gt; tagged, red text saying &quot;Replaced&quot;.</p>
+			</li>
+			<li dir="ltr">How would you replace the contents only on the ones with the word &lsquo;Select&rsquo; in them?</li>
+		</ul>
+	</body>
+</html>
